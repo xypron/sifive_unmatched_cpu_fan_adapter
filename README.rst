@@ -15,6 +15,13 @@ You will need an M4 thread cutter for mounting the fan with M4x15mm screws.
   :width: 400
   :alt: Mounted fan
 
+This is an alternative design where the fan is radially offset with respect to
+the heat sink.
+
+.. image:: cpu_fan_adapter2.jpg
+  :width: 400
+  :alt: Fan adapter 2
+
 License
 -------
 

@@ -38,95 +38,65 @@ module fan40() {
     }
 }
 
-module adapter() {
+module adapter2() {
     difference() {
         union() {
-            translate([0, 0, 1])
-                cube([25, 25, 2], center = true);
-
-            difference() {
-                multmatrix([
-                        [1, 0, 0, 0],
-                        [0, 1, 0, 16.25],
-                        [0, 8.4 / 7.5, 1, 5.2],
-                        [0, 0, 0, 1],
-                        ]){
-                    cube([40, 7.5, 2], center = true);
-                }
-                union() {
-                    multmatrix([
-                            [1, -5.5 / 7.5, 0, -22.25],
-                            [0, 1, 0, 16.25],
-                            [0, 0, 1, 0],
+                difference() {
+                    union() {
+                        translate([7.5, 0, 12.5])
+                            cube([25, 25, 1], center = true);
+                        multmatrix([
+                            [1, 0, 7.5/13, 3.75],
+                            [0, 1, 0, 0],
+                            [0, 0, 1, 6.5],
                             [0, 0, 0, 1],
-                            ]){
-                        cube([10, 9, 50], center= true);
+                        ])
+                        cylinder(h = 13, r1 = 21, r2 = 14, center = true);
+                        translate([-16, 16, 2])
+                            cylinder(h = 4, r = 4, center = true);
+                        translate([16, -16, 2])
+                            cylinder(h = 4, r = 4, center = true);
                     }
-
-                    multmatrix([
-                            [1, 5.5 / 7.5, 0, 22.25],
-                            [0, 1, 0, 16.25],
-                            [0, 0, 1, 0],
+                    union() {
+                        multmatrix([
+                            [1, 0, 7.5/13, 3.75],
+                            [0, 1, 0, 0],
+                            [0, 0, 1, 6.5],
                             [0, 0, 0, 1],
-                            ]){
-                        cube([10, 9, 50], center= true);
+                            ])
+                            cylinder(h = 39, r1 = 27, r2 = 4.5, center = true);
                     }
                 }
-            }
 
-            multmatrix([
-                    [1, 5.5 / 7.5, 0, 16.25],
-                    [0, 1, 0, 16.25],
-                    [0, 8.4 / 7.5, 1, -13.8],
-                    [0, 0, 0, 1],
-                    ]){
-                cube([2, 7.5, 38], center= true);
-            }
-
-            multmatrix([
-                    [1, -5.5 / 7.5, 0, -16.25],
-                    [0, 1, 0, 16.25],
-                    [0, 8.4 / 7.5, 1, -13.8],
-                    [0, 0, 0, 1],
-                    ]){
-                cube([2, 7.5, 38], center= true);
-            }
-
-
-            translate([16, 18, 6.4])
-                rotate([90, 0, 0])
-                    cylinder(h = 4, r = 4, center = true);
-            translate([-16, 18, 6.4])
-                rotate([90, 0, 0])
-                cylinder(h = 4, r = 4, center = true);
-
-            translate([-10, 10, 5.2])
+            translate([17.5, 10, 7.8])
                 cylinder(h = 10.4, r = 2.5, center = true);
-            translate([10, -10., 5.2])
+            translate([-2.5, -10., 7.8])
                 cylinder(h = 10.4, r = 2.5, center = true);
-
-
-
+                
         }
         union() {
-            translate([-16, 18, 6.4])
-                rotate([90, 0, 0])
-                    cylinder(h = 20, r = 1.65, center = true);
-            translate([16, 18, 6.4])
-                rotate([90, 0, 0])
-                    cylinder(h = 20, r = 1.65, center = true);
+            translate([-16, 16, 5])
+                cylinder(h = 20, r = 1.65, center = true);
+            translate([16, -16, 5])
+                cylinder(h = 20, r = 1.65, center = true);
 
-            translate([0, 0, -37.6])
-                cube([60, 60, 20], center = true);
-
-            translate([-10, 10, 5])
+            translate([17.5, 10, 5])
                 cylinder(h = 20, r = 1.5, center = true);
-            translate([10, -10, 5])
+            translate([-2.5, -10, 5])
                 cylinder(h = 20, r = 1.5, center = true);
+            translate([17.5, 10, -5])
+                cylinder(h = 15.2, r = 3, center = true);
         }
     }
 }
 
+/*
+color(c = [0.7, 0.7, 0.7, .3])
+    fan25();
+color(c = [0.7, 0.7, 0.7, .3])
+    fan40();
+adapter();
+*/
 color(c = [0.5, 0.5, 0.5, 1])
-    rotate([-90, 0, 0])
-        adapter();
+    rotate([180, 0, 0])
+        adapter2();
